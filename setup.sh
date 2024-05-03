@@ -43,5 +43,7 @@ echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &" >> bypa
 crontab bypass_oracle
 
 # Cài đặt DATUAN Sitemap Warmer
-0 1 * * * reboot
-0 */4 * * * docker run tdtgit/sitemap-warmer bibica.net -a
+crontab -l > sitemap_warmer_oracle
+echo "0 1 * * * reboot" >> sitemap_warmer_oracle
+echo "0 */4 * * * docker run tdtgit/sitemap-warmer bibica.net -a" >> sitemap_warmer_oracle
+crontab sitemap_warmer_oracle
